@@ -16,11 +16,33 @@ if len(sys.argv) < 2:
     print("Please provide a path to lint. Usage: lgtm_lint <path>")
     sys.exit(1)
 
-def printProgressBar (iteration, total, prefix = '', suffix = '', decimals = 1, length = 100, fill = '█', printEnd = "\r"):
+
+def progress_bar(
+        iteration: int, 
+        total: int, 
+        prefix: str = '', 
+        suffix: str = '', 
+        decimals: int = 1, 
+        length: int = 100, 
+        fill: str = '█', 
+        print_end: str = "\r"
+    ):
+    """
+    Call in a loop to create terminal progress bar
+    @params:
+        iteration   - Required  : current iteration (Int)
+        total       - Required  : total iterations (Int)
+        prefix      - Optional  : prefix string (Str)
+        suffix      - Optional  : suffix string (Str)
+        decimals    - Optional  : positive number of decimals in percent complete (Int)
+        length      - Optional  : character length of bar (Int)
+        fill        - Optional  : bar fill character (Str)
+        print_end   - Optional  : end character (e.g. "\r", "\r\n") (Str)
+    """
     percent = ("{0:." + str(decimals) + "f}").format(100 * (iteration / float(total)))
-    filledLength = int(length * iteration // total)
-    bar = fill * filledLength + '-' * (length - filledLength)
-    print(f'\r{prefix} |{bar}| {percent}% {suffix}', end = printEnd)
+    filled_length = int(length * iteration // total)
+    bar = fill * filled_length + '-' * (length - filled_length)
+    print(f'\r{prefix} |{bar}| {percent}% {suffix}', end = print_end)
     if iteration == total: 
         print()
 
@@ -47,16 +69,14 @@ items = list(range(0, 57))
 items_len = len(items)
 step_size = math.ceil(items_len/len(lint_files))
 max_char_len = max([len(f) for f in lint_files])
+done_msg = f"Done!{' ' * max_char_len}"
 
-
-printProgressBar(0, items_len, prefix = 'Progress:', suffix = 'Complete', length = 50)
+progress_bar(iteration=0, total=items_len, prefix='Progress:', suffix='Complete', length=50)
 for i, item in enumerate(items):
     time.sleep(0.1)
     file = lint_files[min(math.floor(i/step_size), len(lint_files) - 1)]
-    buffer = ' ' * (max_char_len - len(file))
-    message = f'Linting {file}{buffer}'
-
-    printProgressBar(i + 1, items_len, prefix = 'Progress:', suffix = message if i != (items_len-1) else 'Done!', length = 50)
+    message = f"Linting {file}{' ' * (max_char_len - len(file))}"
+    progress_bar(iteration=i + 1, total=items_len, prefix='Progress:', suffix=message if i != (items_len-1) else done_msg, length=50)
 
 
 print('Summary:')
