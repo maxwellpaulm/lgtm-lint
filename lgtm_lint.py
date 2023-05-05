@@ -42,18 +42,21 @@ print(f'Found {len(lint_files)} files to lint.')
 print('Linting files...')
 
 
-# A List of Items
-items = list(range(0, 57))
-l = len(items)
-
-
 # Initial call to print 0% progress
-printProgressBar(0, l, prefix = 'Progress:', suffix = 'Complete', length = 50)
-step_size = math.ceil(l/len(lint_files))
+items = list(range(0, 57))
+items_len = len(items)
+step_size = math.ceil(items_len/len(lint_files))
+max_char_len = max([len(f) for f in lint_files])
+
+
+printProgressBar(0, items_len, prefix = 'Progress:', suffix = 'Complete', length = 50)
 for i, item in enumerate(items):
     time.sleep(0.1)
     file = lint_files[min(math.floor(i/step_size), len(lint_files) - 1)]
-    printProgressBar(i + 1, l, prefix = 'Progress:', suffix = f'Linting {file}', length = 50)
+    buffer = ' ' * (max_char_len - len(file))
+    message = f'Linting {file}{buffer}'
+
+    printProgressBar(i + 1, items_len, prefix = 'Progress:', suffix = message if i != (items_len-1) else 'Done!', length = 50)
 
 
 print('Summary:')
