@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools>=61.0",]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "lgtm-lint"
+version = "1.0.1"
+authors = [
+  { name="Paul Maxwell", email="maxwellpaulm@gmail.com" },
+  { name="Zach Spar", email="zachspar@gmail.com" },
+]
+description = "A fully featured 'Looks good to me!' linter."
+readme = "README.md"
+requires-python = ">=3.7"
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "License :: OSI Approved :: The Unlicense (Unlicense)",
+    "Operating System :: OS Independent",
+]
+dependencies = []  # HAHA
+
+
+[project.scripts]
+lgtm-lint = "lgtm_lint:__main__.main"
+
+
+[project.urls]
+"Homepage" = "https://github.com/maxwellpaulm/lgtm-lint"
+"Bug Tracker" = "https://github.com/maxwellpaulm/lgtm-lint/issues"
+
