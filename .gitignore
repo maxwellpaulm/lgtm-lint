@@ -4,6 +4,6 @@ out
 test
 
 *.egg-info
+dist
 venv
 env
-
