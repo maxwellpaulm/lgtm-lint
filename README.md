@@ -11,13 +11,8 @@ You can install this package via PyPI with the following command:
 ```bash
 pip install lgtm-lint
 ```
-
-## Local Python Install
-You can install this package locally by running the following from project root:
-```bash
-pip install -e .
-```
 This will automatically add `lgtm-lint` to your path.
+
 
 ## Legacy Install
 Just run the following:
