@@ -1,6 +1,13 @@
 # LGTM Linter
 Looks good to me! This is a satirical "linter" that doesn't actually assert or check anything. Linters have become so picky and opinionated that we thought it might be refreshing to have one that is happy with your code just the way it is!
 
+
+## Python Install
+You can install this package via PyPI with the following command:
+```bash
+pip install lgtm-lint
+```
+
 ## Local Python Install
 You can install this package locally by running the following from project root:
 ```bash
