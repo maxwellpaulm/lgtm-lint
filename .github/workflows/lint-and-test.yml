@@ -1,0 +1,28 @@
+name: Lint, Test & Upload Coverage
+on:
+  pull_request:
+    branches: [ master ]
+jobs:
+  lint-and-test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Python
+      uses: actions/setup-python@v3
+      with:
+        python-version: '3.x'
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        python -m pip install coverage black==22.6.0
+        python -m pip install -e .
+    - name: Lint with black
+      run: |
+        # Run black on all Python files
+        black --line-length 120 --check ./
+    - name: Test with coverage
+      run: |
+        # TODO FIXME: Create and run tests
+        echo "Coming soon!"
+    - name: Upload coverage report
+      uses: codecov/codecov-action@v2
