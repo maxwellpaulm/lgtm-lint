@@ -7,6 +7,7 @@ import sys
 import time
 
 # THIS IS A TEST
+# Hello
 
 def progress_bar(
     iteration: int,
