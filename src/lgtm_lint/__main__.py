@@ -1,8 +1,7 @@
 #!/usr/bin/env python3
-
-import glob
 import math
 import os
+import pathlib
 import sys
 import time
 
@@ -53,7 +52,9 @@ def main():
     print(f"Expanding linting paths: {lint_paths}")
     lint_files = []
     for lint_path in lint_paths:
-        lint_files.extend([f for f in glob.glob(lint_path, recursive=True) if os.path.isfile(f)])
+        for path in pathlib.Path(lint_path).rglob("*"):
+            if path.is_file():
+                lint_files.append(os.path.abspath(path))
 
     if len(lint_files) == 0:
         print("No files found to lint.")
