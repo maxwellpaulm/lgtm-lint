@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "lgtm-lint"
-version = "1.0.2"
+version = "1.0.3"
 authors = [
   { name="Paul Maxwell", email="maxwellpaulm@gmail.com" },
   { name="Zach Spar", email="zachspar@gmail.com" },
